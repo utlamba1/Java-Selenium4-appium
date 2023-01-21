@@ -103,7 +103,7 @@ The tests can be executed in the terminal using the following command:
 
 ```bash
   
-**mvn test -P android**
+mvn test -P android
 ```
 
 
