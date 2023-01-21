@@ -69,52 +69,10 @@ set LT_USERNAME="YOUR_LAMBDATEST_USERNAME" `
 set LT_ACCESS_KEY="YOUR_LAMBDATEST_ACCESS_KEY"
 ```
 
-### Upload Your Application
-
-Upload your **_iOS_** application (.ipa file) or **_android_** application (.apk file) to the LambdaTest servers using our **REST API**. You need to provide your **Username** and **AccessKey** in the format `Username:AccessKey` in the **cURL** command for authentication. Make sure to add the path of the **appFile** in the cURL request. Here is an example cURL request to upload your app using our REST API:
-
-**Using App File:**
-
-**Linux/macOS:**
-
-```js
-curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
---location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' \
---form 'name="Android_App"' \
---form 'appFile=@"/Users/macuser/Downloads/proverbial_android.apk"'
-```
-
-**Windows:**
-
-```js
-curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" -X POST "https://manual-api.lambdatest.com/app/upload/realDevice" -F "appFile=@"/Users/macuser/Downloads/proverbial_android.apk""
-```
-
-**Using App URL:**
-
-**Linux/macOS:**
-
-```js
-curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" \
---location --request POST 'https://manual-api.lambdatest.com/app/upload/realDevice' \
---form 'name="Android_App"' \
---form 'url="https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_android.apk"'
-```
-
-**Windows:**
-
-```js
-curl -u "YOUR_LAMBDATEST_USERNAME:YOUR_LAMBDATEST_ACCESS_KEY" -X POST "https://manual-api.lambdatest.com/app/upload/realDevice" -d "{"url":"https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_android.apk","name":"sample.apk"}"
-```
-
-**Tip:**
-
-- If you do not have any **.apk** or **.ipa** file, you can run your sample tests on LambdaTest by using our sample :link: [Android app](https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_android.apk) or sample :link: [iOS app](https://prod-mobile-artefacts.lambdatest.com/assets/docs/proverbial_ios.ipa).
-- Response of above cURL will be a **JSON** object containing the `App URL` of the format - <lt://APP123456789123456789> and will be used in the next step.
 
 ## Run Your First Test
 
-**Test Scenario:** Check out [vanila_android.java](https://github.com/LambdaTest/LT-appium-java/blob/master/src/test/java/vanilla_android.java) file to view the sample test script for android and [vanilla_ios.java](https://github.com/LambdaTest/LT-appium-java/blob/master/src/test/java/vanilla_ios.java) for iOS.
+**Test Scenario:** Check out [vanila_android.java](https://github.com/LambdaTest/LT-appium-java/blob/master/src/test/java/vanilla_android.java) file to view the sample test script for android.
 
 ### Configuring Your Test Capabilities
 
@@ -123,44 +81,10 @@ You can update your custom capabilities in test scripts. In this sample project,
 <Tabs className="docs__val">
 <TabItem value="android-config" label="Android" default>
 
-```java
-DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("deviceName", "Galaxy S20");
-            capabilities.setCapability("platformVersion", "11");
-            capabilities.setCapability("platformName", "Android");
-            capabilities.setCapability("isRealMobile", true);
-            capabilities.setCapability("app", "YOUR_APP_URL"); //Enter your app url
-            capabilities.setCapability("deviceOrientation", "PORTRAIT");
-            capabilities.setCapability("build", "Java Vanilla - iOS");
-            capabilities.setCapability("name", "Sample Test Java");
-            capabilities.setCapability("console", true);
-            capabilities.setCapability("network", false);
-            capabilities.setCapability("visual", true);
-            capabilities.setCapability("devicelog", true);
-```
-
 </TabItem>
 
 <TabItem value="ios-config" label="iOS" default>
 
-```java
-DesiredCapabilities caps = new DesiredCapabilities();
-            caps.setCapability("platformVersion", "15");
-            caps.setCapability("deviceName", "iPhone 12");
-            caps.setCapability("isRealMobile", true);
-            caps.setCapability("app", "YOUR_APP_URL"); //Enter your app url
-            caps.setCapability("platformName", "iOS");
-            caps.setCapability("build", "Java Vanilla - iOS");
-            caps.setCapability("name", "Sample Test Java");
-            caps.setCapability("devicelog", true);
-            caps.setCapability("network", true);
-```
-
-</TabItem>
-
-</Tabs>
-
-**Note:**
 
 - You must add the generated **APP_URL** to the `"app"` capability in the config file.
 - You can generate capabilities for your test requirements with the help of our inbuilt **[Capabilities Generator tool](https://www.lambdatest.com/capabilities-generator/beta/index.html?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java)**. A more Detailed Capability Guide is available [here](https://www.lambdatest.com/support/docs/desired-capabilities-in-appium/?utm_source=github&utm_medium=repo&utm_campaign=LT-appium-java).
@@ -178,7 +102,8 @@ The tests can be executed in the terminal using the following command:
 **Android:**
 
 ```bash
-mvn test -P android
+  
+**mvn test -P android**
 ```
 
 
